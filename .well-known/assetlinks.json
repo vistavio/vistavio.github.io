@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.kittygo.app",
+    "sha256_cert_fingerprints": [
+      "F9:B7:07:EA:C2:DD:40:6D:20:53:59:23:30:94:2C:94:EC:94:01:5D:15:99:DF:D2:DE:2A:71:F3:92:22:02:00"
+    ]
+  }
+}]
