@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send To PC — Windows</title>
+  <meta name="description" content="Send To PC Windows programını indirin: telefonda okuttuğunuz barkodlar Wi-Fi ile PC'ye gelsin.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%231F6B4A'/%3E%3Cpath fill='white' transform='translate(3 3) scale(.75)' d='M3,9V5a2,2 0,0 1,2,-2h4v2H5v4zM15,3h4a2,2 0,0 1,2,2v4h-2V5h-4zM21,15v4a2,2 0,0 1,-2,2h-4v-2h4v-4zM9,21H5a2,2 0,0 1,-2,-2v-4h2v4h4zM7,8h1.5v8H7zM9.5,8h1v8h-1zM11.5,8h2v8h-2zM14.5,8h1v8h-1zM16.5,8h0.8v8h-0.8z'/%3E%3C/svg%3E">
+  <style>
+    :root { --green: #1F6B4A; --green-2: #2E8B5E; --text: #1D2420; --muted: #5f6763; --bg: #F6F2EA; --card: #ffffff; --line: #e7e2d8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    main { max-width: 640px; margin: 0 auto; padding: 40px 16px 56px; }
+    .top { display: flex; align-items: center; gap: 14px; }
+    .logo { width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(135deg, var(--green-2), var(--green)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .logo svg { width: 38px; height: 38px; }
+    h1 { margin: 0; font-size: 30px; color: var(--green); }
+    .sub { margin: 0; color: var(--muted); }
+    .langs { margin-left: auto; font-size: 14px; }
+    .langs button { background: none; border: none; color: var(--green); cursor: pointer; font: inherit; padding: 4px; }
+    .langs button[aria-pressed="true"] { font-weight: 700; text-decoration: underline; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; margin-top: 28px; }
+    .lead { margin-top: 0; }
+    .download { display: block; text-align: center; background: var(--green); color: #fff; text-decoration: none; font-weight: 600; font-size: 18px; padding: 16px; border-radius: 14px; }
+    .download:hover { background: var(--green-2); }
+    .meta { text-align: center; color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+    h2 { font-size: 18px; margin: 28px 0 8px; }
+    ol { padding-left: 22px; margin: 0; }
+    li { margin: 6px 0; }
+    .note { background: #FFF7E6; border: 1px solid #F3D9A4; border-radius: 12px; padding: 12px 14px; font-size: 14px; margin-top: 16px; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .row a { flex: 1 1 180px; text-align: center; border: 1px solid var(--green); color: var(--green); text-decoration: none; border-radius: 12px; padding: 10px; font-size: 15px; }
+    footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 32px; }
+    footer a { color: var(--muted); }
+    [data-lang] { display: none; }
+    html[lang="tr"] [data-lang="tr"], html[lang="en"] [data-lang="en"] { display: revert; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path fill="#fff" d="M3,9V5a2,2 0,0 1,2,-2h4v2H5v4zM15,3h4a2,2 0,0 1,2,2v4h-2V5h-4zM21,15v4a2,2 0,0 1,-2,2h-4v-2h4v-4zM9,21H5a2,2 0,0 1,-2,-2v-4h2v4h4zM7,8h1.5v8H7zM9.5,8h1v8h-1zM11.5,8h2v8h-2zM14.5,8h1v8h-1zM16.5,8h0.8v8h-0.8z"/></svg>
+    </div>
+    <div>
+      <h1>Send To PC</h1>
+      <p class="sub" data-lang="tr">Tara ve PC'ye gönder</p>
+      <p class="sub" data-lang="en">Scan and send to PC</p>
+    </div>
+    <div class="langs">
+      <button type="button" data-set="tr">TR</button> · <button type="button" data-set="en">EN</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="lead" data-lang="tr">Telefonda okuttuğunuz barkod ve QR kodlar Wi-Fi üzerinden bu bilgisayara gelir, panoya kopyalanır ve imlecin olduğu yere yapıştırılır. Bunun için bilgisayara ücretsiz Send To PC programını kurun.</p>
+    <p class="lead" data-lang="en">Barcodes and QR codes you scan on your phone arrive on this computer over Wi-Fi, are copied to the clipboard and pasted where your cursor is. Just install the free Send To PC program on your computer.</p>
+
+    <a class="download" href="https://github.com/vistavio/SendToPC-download/releases/latest/download/SendtoPC.exe">
+      <span data-lang="tr">⬇ Windows için indir</span><span data-lang="en">⬇ Download for Windows</span>
+    </a>
+    <p class="meta" data-lang="tr">Ücretsiz · Windows 10/11 · her zaman en son sürüm</p>
+    <p class="meta" data-lang="en">Free · Windows 10/11 · always the latest version</p>
+
+    <h2 data-lang="tr">Kurulum</h2>
+    <h2 data-lang="en">Install</h2>
+    <ol data-lang="tr">
+      <li>İndirdiğiniz <strong>SendtoPC.exe</strong> dosyasına çift tıklayın.</li>
+      <li>"Windows bilgisayarınızı korudu" uyarısı çıkarsa <strong>Ek bilgi → Yine de çalıştır</strong>'a tıklayın.</li>
+      <li>Yönetici iznini onaylayın. Program kendini kurar ve Windows açılışında otomatik başlar.</li>
+      <li>Sistem tepsisindeki yeşil barkod simgesine sağ tıklayıp <strong>Telefonu Eşle</strong>'yi seçin ve ekrandaki QR kodu Send To PC uygulamasıyla okutun.</li>
+    </ol>
+    <ol data-lang="en">
+      <li>Double-click the downloaded <strong>SendtoPC.exe</strong>.</li>
+      <li>If "Windows protected your PC" appears, click <strong>More info → Run anyway</strong>.</li>
+      <li>Approve the administrator prompt. The program installs itself and starts with Windows.</li>
+      <li>Right-click the green barcode icon in the system tray, choose <strong>Pair Phone</strong> and scan the QR code with the Send To PC app.</li>
+    </ol>
+
+    <div class="note" data-lang="tr">SmartScreen uyarısı, programın henüz dijital olarak imzalanmamış olmasından kaynaklanır. Program yalnızca yerel ağınızda çalışır ve internete veri göndermez.</div>
+    <div class="note" data-lang="en">The SmartScreen warning appears because the program is not digitally signed yet. It works only on your local network and sends no data to the internet.</div>
+
+    <div class="row">
+      <a href="https://play.google.com/store/apps/details?id=com.vistavio.sendtopc"><span data-lang="tr">Android uygulaması</span><span data-lang="en">Android app</span></a>
+      <a href="https://github.com/vistavio/SendToPC-download/releases/latest"><span data-lang="tr">Sürüm notları ve kaldırma</span><span data-lang="en">Release notes &amp; uninstall</span></a>
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://vistavio.github.io/SendToPC-privacy/"><span data-lang="tr">Gizlilik politikası</span><span data-lang="en">Privacy policy</span></a>
+    · © 2026 vistavio
+  </footer>
+</main>
+<script>
+  (function () {
+    var root = document.documentElement;
+    function set(lang) {
+      root.lang = lang;
+      document.querySelectorAll('[data-set]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.set === lang); });
+      try { localStorage.setItem('stpc-lang', lang); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('stpc-lang'); } catch (e) {}
+    var nav = (navigator.language || 'en').toLowerCase();
+    set(saved || (nav.indexOf('tr') === 0 ? 'tr' : 'en'));
+    document.querySelectorAll('[data-set]').forEach(function (b) { b.addEventListener('click', function () { set(b.dataset.set); }); });
+  })();
+</script>
+</body>
+</html>
