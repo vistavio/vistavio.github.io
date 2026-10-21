@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found</title>
+  <script>
+    // GitHub Pages buyuk/kucuk harfe duyarli: /SendToPC gibi adresleri kucuk harfli sayfaya yonlendir.
+    (function () {
+      var p = location.pathname, lower = p.toLowerCase();
+      if (lower !== p) location.replace(lower + location.search + location.hash);
+    })();
+  </script>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #F6F2EA; color: #1D2420; text-align: center; padding: 80px 16px; }
+    a { color: #1F6B4A; }
+  </style>
+</head>
+<body>
+  <h1>404</h1>
+  <p>Page not found · Sayfa bulunamadı</p>
+  <p><a href="/sendtopc/">Send To PC</a></p>
+</body>
+</html>
