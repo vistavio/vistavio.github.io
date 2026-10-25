@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Word'n – Davet / Invite</title>
+  <style>
+    :root { --ink: #3a2c4e; --accent: #f28c28; --muted: #7a6a88; --bg: #fff3e2; --card: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #f3ecfa; --muted: #c5b8d3; --bg: #241c2e; --card: #33293f; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); padding: 16px; }
+    .card { background: var(--card); border-radius: 28px; padding: 32px 24px; max-width: 440px; width: 100%; text-align: center;
+            box-shadow: 0 10px 30px rgba(90, 50, 20, 0.15); }
+    .tiles { display: flex; justify-content: center; gap: 6px; margin-bottom: 20px; }
+    .tiles span { width: 40px; height: 40px; border-radius: 10px; color: #fff; font-weight: 800; font-size: 22px;
+                  display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 0 rgba(0,0,0,0.18); }
+    h1 { font-size: 24px; margin: 0 0 8px; }
+    p { color: var(--muted); line-height: 1.5; margin: 8px 0 20px; }
+    .code { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: var(--ink); margin: 8px 0 24px; }
+    a.btn { display: block; padding: 16px; border-radius: 18px; font-weight: 700; font-size: 18px; text-decoration: none; margin: 12px 0; }
+    a.open { background: var(--accent); color: #fff; box-shadow: 0 5px 0 #c96d17; }
+    a.store { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+    .err { color: #c0392b; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="tiles" aria-hidden="true">
+      <span style="background:#ef5350">W</span><span style="background:#ffc13b">O</span><span style="background:#66bb6a">R</span>
+      <span style="background:#42a5f5">D</span><span style="background:#ab47bc">'</span><span style="background:#ff8a32">N</span>
+    </div>
+    <h1 id="title"></h1>
+    <p id="text"></p>
+    <div class="code" id="code"></div>
+    <a class="btn open" id="open" href="#"></a>
+    <a class="btn store" id="store" href="#"></a>
+  </div>
+  <script>
+    (function () {
+      var tr = (navigator.language || "").toLowerCase().indexOf("tr") === 0;
+      var T = tr ? {
+        title: "Word'n'e davet edildin!",
+        text: "Arkadaşın seni Word'n'de arkadaş olarak eklemek istiyor. Oyun yüklüyse \"Oyunda aç\"a dokun; yoksa önce Google Play'den indir, oyunu açınca davet kendiliğinden gelir.",
+        open: "Oyunda aç", store: "Google Play'den indir",
+        bad: "Bu davet bağlantısı eksik ya da bozuk. Arkadaşından yeni bir bağlantı iste."
+      } : {
+        title: "You're invited to Word'n!",
+        text: "Your friend wants to add you as a friend in Word'n. If you have the game, tap \"Open in the game\"; if not, get it from Google Play first: the invite comes in when you open the game.",
+        open: "Open in the game", store: "Get it on Google Play",
+        bad: "This invite link is incomplete or broken. Ask your friend for a new one."
+      };
+      document.documentElement.lang = tr ? "tr" : "en";
+      document.getElementById("title").textContent = T.title;
+      var q = new URLSearchParams(location.search);
+      var code = (q.get("c") || "").toUpperCase();
+      var token = (q.get("t") || "").toLowerCase();
+      var pkg = "com.vistavio.wordn";
+      var play = "https://play.google.com/store/apps/details?id=" + pkg;
+      if (!/^WN-[A-Z0-9]{5}$/.test(code)) {
+        document.getElementById("text").textContent = T.bad;
+        document.getElementById("text").className = "err";
+        document.getElementById("open").style.display = "none";
+        document.getElementById("store").textContent = T.store;
+        document.getElementById("store").href = play;
+        return;
+      }
+      if (!/^[a-z0-9]{8}$/.test(token)) token = "";
+      var invite = "invite?c=" + code + (token ? "&t=" + token : "");
+      // Play keeps the referrer through the install; the game reads it on first start.
+      var store = play + "&referrer=" + encodeURIComponent("invite=" + code + (token ? "." + token : ""));
+      var intent = "intent://" + invite + "#Intent;scheme=wordn;package=" + pkg +
+          ";S.browser_fallback_url=" + encodeURIComponent(store) + ";end";
+      document.getElementById("text").textContent = T.text;
+      document.getElementById("code").textContent = code;
+      document.getElementById("open").textContent = T.open;
+      document.getElementById("store").textContent = T.store;
+      var android = /android/i.test(navigator.userAgent);
+      document.getElementById("open").href = android ? intent : "wordn://" + invite;
+      document.getElementById("store").href = store;
+      // Try once by itself (works in most browsers; in-app browsers may need the button).
+      if (android) { setTimeout(function () { location.href = intent; }, 300); }
+    })();
+  </script>
+</body>
+</html>
